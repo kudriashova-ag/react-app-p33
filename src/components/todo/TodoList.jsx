@@ -8,6 +8,7 @@ import uniqid from "uniqid";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState(list);
+  const [activeFilter, setActiveFilter] = useState('All');
 
   const addTask = (title) => {
     setTasks([...tasks, { id: uniqid(), title, done: false }]);
@@ -17,17 +18,17 @@ const TodoList = () => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const toggleDone = (id) => { 
-    const newTasks = tasks.map(task => { 
-      if (task.id === id) { 
-        return {...task, done: !task.done}
+  const toggleDone = (id) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, done: !task.done };
       }
       return task;
-    }) 
+    });
     setTasks(newTasks);
-  }
+  };
 
-  const editTitle = (id, title) => { 
+  const editTitle = (id, title) => {
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
         return { ...task, title: title };
@@ -35,17 +36,26 @@ const TodoList = () => {
       return task;
     });
     setTasks(newTasks);
-  }
+  };
 
+  const filters = {
+    All: () => true,
+    Done: (task) => task.done,
+    'Todo tasks': (task) => !task.done
+  };
 
   return (
     <div className="todo">
       <h1>Todo List</h1>
       <TodoForm addTask={addTask} />
       <div className="todo-panel">
-        <TodoFilter />
+        <TodoFilter
+          setActiveFilter={setActiveFilter}
+          activeFilter={activeFilter}
+          filters={filters}
+        />
         <div className="todo-list">
-          {tasks.map((task) => (
+          {tasks.filter(filters[activeFilter]).map((task) => (
             <TodoItem
               key={task.id}
               item={task}
