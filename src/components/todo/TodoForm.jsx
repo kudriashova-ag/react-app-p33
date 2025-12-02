@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const TodoForm = ({ addTask }) => {
+  
   const [title, setTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -36,4 +37,4 @@ const TodoForm = ({ addTask }) => {
   );
 };
 
-export default TodoForm;
+export default React.memo(TodoForm);

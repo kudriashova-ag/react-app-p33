@@ -1,6 +1,8 @@
 import React from "react";
 
 const TodoFilter = ({ setActiveFilter, activeFilter, filters }) => {
+  console.log('Filter');
+  
   const filterKeys = Object.keys(filters); // ['all', 'todo', 'done']
 
   return (
@@ -20,4 +22,4 @@ const TodoFilter = ({ setActiveFilter, activeFilter, filters }) => {
   );
 };
 
-export default TodoFilter;
+export default React.memo(TodoFilter);

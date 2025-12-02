@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const TodoItem = ({ item, removeTask, toggleDone, editTitle }) => {
+  console.log('Item');
+  
   const [isEdit, setIsEdit] = useState(false);
   const [title, setTitle] = useState(item.title);
   const [errorMessage, setErrorMessage] = useState('');
@@ -62,4 +64,4 @@ const TodoItem = ({ item, removeTask, toggleDone, editTitle }) => {
   );
 };
 
-export default TodoItem;
+export default React.memo(TodoItem);
