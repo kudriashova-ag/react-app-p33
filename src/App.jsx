@@ -1,10 +1,13 @@
+import { Outlet } from "react-router";
 import "./App.css"
-import TodoList from "./components/todo/TodoList";
+import Header from "./components/header/Header";
 
 function App() {
   return (
     <>
-      <TodoList />
+      <Header />
+      <Outlet />
+      <footer>Footer</footer>
     </>
   );
 }
