@@ -1,6 +1,9 @@
 header{
     background-color: #333;
     padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main-menu a{
@@ -19,4 +22,21 @@ header{
 .main-menu a.active{
     color: orangered;
     opacity: 1;
+}
+
+
+.btn{
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: background-color .3s;
+}
+
+.btn:hover{
+    background-color: black;
 }

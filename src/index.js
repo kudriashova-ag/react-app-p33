@@ -1,14 +1,27 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {  RouterProvider } from 'react-router';
+import { RouterProvider } from 'react-router';
 import router from './router';
+import ThemeProvider from './providers/ThemeProvider';
+import L18nProvider from './providers/l18nProvider';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <RouterProvider router={router} />
+  <L18nProvider>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </L18nProvider>
 );
+
+
+
+
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

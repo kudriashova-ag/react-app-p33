@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useReducer, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from "react";
 import "./TodoList.css";
 import TodoForm from "./TodoForm";
 import TodoFilter from "./TodoFilter";
 import TodoItem from "./TodoItem";
 import list from "./data";
 import todoReducer from "../../reducers/TodoReducer";
+import l18nContext from "../../contexts/l18nContext";
 
 const filters = {
   All: () => true,
@@ -20,6 +21,8 @@ const sortFunctions = {
 };
 
 const TodoList = () => {
+  const { currentTexts } = useContext(l18nContext)
+
   const [tasks, dispatch] = useReducer(
     todoReducer,
     localStorage.getItem("tasks")
@@ -77,8 +80,7 @@ const TodoList = () => {
 
   return (
     <div className="todo">
-      
-      <h1>Todo List</h1>
+      <h1>{currentTexts.todoTitle}</h1>
       <TodoForm addTask={addTask} />
 
       <div>
