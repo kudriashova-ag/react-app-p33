@@ -9,17 +9,17 @@ const Header = () => {
   const { theme } = useContext(ThemeContext)
   
     return (
-      <header style={{background: theme === 'light' ? '#333' : '#222'}}>
+      <header style={{ background: theme === "light" ? "#333" : "#222" }}>
         <nav className="main-menu">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/weather">Weather</NavLink>
+          <NavLink to="/users">Users</NavLink>
         </nav>
-        
+
         <div>
           <ThemeSwitcher />
           <LangSwitcher />
         </div>
-        
       </header>
     );
 }
