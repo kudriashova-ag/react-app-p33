@@ -3,8 +3,9 @@ import App from "./App";
 import TodoList from "./components/todo/TodoList";
 import WeatherToday from "./components/weather/WeatherToday";
 import Users from "./pages/Users";
-import { getUsers } from "./loaders/usersLoader";
+import { getUser, getUsers, searchUsers } from "./loaders/usersLoader";
 import User from "./pages/User";
+import SearchResults from "./pages/SearchResults";
 
 const router = createBrowserRouter([
     {
@@ -20,13 +21,19 @@ const router = createBrowserRouter([
                 element: <WeatherToday />
             },
             {
-                path: 'users',
+                path: 'users/:page?',
                 loader: getUsers,
                 element: <Users />
             },
             {
-                path: 'users/:login',
+                path: 'user/:login',
+                loader: getUser,
                 element: <User />
+            },
+            {
+                path: 'search',
+                loader: searchUsers,
+                element: <SearchResults />
             },
             {
                 path: "*",

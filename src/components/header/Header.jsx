@@ -4,6 +4,7 @@ import ThemeSwitcher from './ThemeSwitcher';
 import { useContext } from 'react';
 import ThemeContext from '../../contexts/ThemeContext';
 import LangSwitcher from './LangSwitcher';
+import Search from './Search';
 
 const Header = () => {
   const { theme } = useContext(ThemeContext)
@@ -15,6 +16,8 @@ const Header = () => {
           <NavLink to="/weather">Weather</NavLink>
           <NavLink to="/users">Users</NavLink>
         </nav>
+
+        <Search />
 
         <div>
           <ThemeSwitcher />
