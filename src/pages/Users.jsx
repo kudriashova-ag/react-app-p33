@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 
 const Users = () => {
     /* const [users, setUsers] = useState([]);
@@ -21,9 +21,11 @@ const Users = () => {
         <h1>Users</h1>
         <div className="users-list">
             {users.map((user) => (
-              <div key={user.id}>
-                    <img src={user.avatar_url} alt="" />
-                    <h4>{user.login}</h4>
+                <div key={user.id}>
+                    <Link to={`/users/${user.login}`}>
+                        <img src={user.avatar_url} alt="" />
+                        <h4>{user.login}</h4>
+                    </Link>
               </div>
             ))}
         </div>
