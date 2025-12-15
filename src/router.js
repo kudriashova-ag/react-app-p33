@@ -6,6 +6,7 @@ import Users from "./pages/Users";
 import { getUser, getUsers, searchUsers } from "./loaders/usersLoader";
 import User from "./pages/User";
 import SearchResults from "./pages/SearchResults";
+import Ref from "./components/learn/Ref";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: 'weather',
                 element: <WeatherToday />
+            },
+            {
+                path: 'ref',
+                element: <Ref />
             },
             {
                 path: 'users/:page?',
