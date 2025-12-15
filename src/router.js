@@ -7,6 +7,7 @@ import { getUser, getUsers, searchUsers } from "./loaders/usersLoader";
 import User from "./pages/User";
 import SearchResults from "./pages/SearchResults";
 import Ref from "./components/learn/Ref";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
                 path: 'search',
                 loader: searchUsers,
                 element: <SearchResults />
+            },
+            {
+                path: 'register',
+                element: <Register />
             },
             {
                 path: "*",

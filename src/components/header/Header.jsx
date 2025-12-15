@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import './Header.css'
 import ThemeSwitcher from './ThemeSwitcher';
 import { useContext } from 'react';
 import ThemeContext from '../../contexts/ThemeContext';
 import LangSwitcher from './LangSwitcher';
 import Search from './Search';
+import { UserOutlined } from '@ant-design/icons';
 
 const Header = () => {
   const { theme } = useContext(ThemeContext)
@@ -20,7 +21,12 @@ const Header = () => {
 
         <Search />
 
-        <div>
+        <div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
+
+          <Link to="/register" className='btn'>
+            <UserOutlined />
+          </Link>
+
           <ThemeSwitcher />
           <LangSwitcher />
         </div>
