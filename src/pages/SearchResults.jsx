@@ -1,24 +1,30 @@
-import React, { use, useEffect, useRef, useState } from "react";
-import { Link, useLoaderData, useLocation } from "react-router";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useFetcher, useLoaderData, useLocation } from "react-router";
 
 const SearchResults = () => {
   const users = useLoaderData();
-  const lastElementRef = useRef();
   const [page, setPage] = useState(2);
-  const location = useLocation();
+  const fetcher = useFetcher();
+
+  const lastElementRef = useRef();
 
   // отрумуємо пошуковий запит
+  const location = useLocation();
   const params = new URLSearchParams(location.search);
   const text = params.get("text");
+
+  useEffect(() => { }, [fetcher.state, fetcher.data])
+
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log("visible");
+          fetcher.load(`/search?text=${text}&page=${page}`);
           setPage(page + 1);
         } else {
-          console.log("not visible");
+          // console.log("not visible");
         }
       },
       {
@@ -28,10 +34,11 @@ const SearchResults = () => {
     );
 
     observer.observe(lastElementRef.current);
+    
   }, []);
 
   // при прокрутці до останнього юзера - новий запит
-  // axios.get(`https://api.github.com/search/users?q=${text}+in:login&per_page=10&page=2`);
+  // http://localhost:3000/search?text=pir&page=2
 
   return (
     <div>
