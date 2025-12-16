@@ -1,10 +1,11 @@
 import React, { use, useEffect, useRef } from "react";
-
-// IntersectionObserver
+import { useDispatch, useSelector } from "react-redux";
+import { amountBy, increment } from "../../features/counterSlice";
 
 const Ref = () => {
+  const counter = useSelector((state) => state.counter)
+  const dispatch = useDispatch()
   const divRef = useRef();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -22,11 +23,16 @@ const Ref = () => {
 
     observer.observe(divRef.current);
   }, []);
-
   return (
-    <div style={{ paddingTop: "700px", paddingBottom: "700px" }}>
-      <div ref={divRef} style={{ height: "100px", background: "#ddd" }}>
-        Lorem, ipsum.
+    <div>
+      {counter.value}
+      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(amountBy(3))}>+3</button>
+
+      <div style={{ paddingTop: "700px", paddingBottom: "700px" }}>
+        <div ref={divRef} style={{ height: "100px", background: "#ddd" }}>
+          Lorem, ipsum.
+        </div>
       </div>
     </div>
   );

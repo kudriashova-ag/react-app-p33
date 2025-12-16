@@ -5,16 +5,20 @@ import { RouterProvider } from 'react-router';
 import router from './router';
 import ThemeProvider from './providers/ThemeProvider';
 import L18nProvider from './providers/l18nProvider';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <L18nProvider>
-    <ThemeProvider>
-      <RouterProvider router={router} />
-    </ThemeProvider>
-  </L18nProvider>
+  <Provider store={store}>
+    <L18nProvider>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </L18nProvider>
+  </Provider>
 );
 
 

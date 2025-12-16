@@ -18,6 +18,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  
   const submitHandler = (values) => {
     console.log(values);
   };
